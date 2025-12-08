@@ -89,8 +89,25 @@ class SLL:
                         temp.next = temp.next.next
                         return None
                     temp = temp.next                  
+    
+    def __iter__(self):
+        return SLLIterat(self.start)
         
+
+class SLLIterat:
+    def __init__(self, start):
+        self.current = start
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
         
+        data = self.current.data
+        self.current = self.current.next
+        return data
 
 
 # Test Cases
@@ -99,8 +116,10 @@ sll.insert_at_start(20)
 sll.insert_at_last(30)
 sll.insert_at_start(10)
 sll.insert_after(data=25, value_after=20)
-sll.showSLL()
+# sll.showSLL()
 #sll.delete_first()
 # sll.delete_last()
-sll.delete_item(value=20)
-sll.showSLL()
+sll.delete_item(value=20) 
+for x in sll:
+    print(x, end=' ')
+# sll.showSLL()
