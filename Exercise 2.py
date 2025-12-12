@@ -11,3 +11,5 @@ class Employee:
 
 E1 = Employee(101, "Alice", 50000)
 E1.display()
+
+print(type(None))

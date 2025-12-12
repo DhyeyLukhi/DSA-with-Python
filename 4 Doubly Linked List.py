@@ -109,6 +109,25 @@ class DLL:
         while temp is not None:
             print(temp.data, end=' ')
             temp = temp.next
+
+    def __iter__(self):
+        return DLLIterate(self.start)
+
+
+class DLLIterate:
+    def __init__(self, start):
+        self.current = start
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        
+        data = self.current.data
+        self.current = self.current.next
+        return data
         
 
 
@@ -127,6 +146,8 @@ dll.insert_after(dataOnNode=25, datafter=20)
 dll.delete_item(dataToDelete=30)
 dll.showDLL()
 
+for x in dll:
+    print(x)
 
 
 if __name__ == '__main__':
