@@ -19,7 +19,7 @@ class CLL:
             return True
         
         else:
-            False
+            return False
     
     def insert_start(self, data):
         if self.is_empty():
@@ -72,7 +72,7 @@ class CLL:
             return None
         else:
             if self.last.next == self.last:
-                pass
+                self.delete_last()
             else:
                 newFirst = self.last.next.next
                 self.last.next.next = None
