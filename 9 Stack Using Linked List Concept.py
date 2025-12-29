@@ -58,14 +58,14 @@ class Stack:
     
 
 
-
-myStack = Stack()
-myStack.push(data=10)
-myStack.push(data=20)
-myStack.push(data=30)
-myStack.push(data=40)
-myStack.size()
-myStack.peek()
-myStack.pop()
-myStack.peek()
-myStack.size()
+# Commenting out the driver code
+# myStack = Stack()
+# myStack.push(data=10)
+# myStack.push(data=20)
+# myStack.push(data=30)
+# myStack.push(data=40)
+# myStack.size()
+# myStack.peek()
+# myStack.pop()
+# myStack.peek()
+# myStack.size() 

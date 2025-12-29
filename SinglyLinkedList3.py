@@ -111,15 +111,15 @@ class SLLIterat:
 
 
 # Test Cases
-sll = SLL()
-sll.insert_at_start(20)
-sll.insert_at_last(30)
-sll.insert_at_start(10)
-sll.insert_after(data=25, value_after=20)
+# sll = SLL()
+# sll.insert_at_start(20)
+# sll.insert_at_last(30)
+# sll.insert_at_start(10)
+# sll.insert_after(data=25, value_after=20)
 # sll.showSLL()
 #sll.delete_first()
 # sll.delete_last()
-sll.delete_item(value=20) 
-for x in sll:
-    print(x, end=' ')
+# sll.delete_item(value=20) 
+# for x in sll:
+#     print(x, end=' ')
 # sll.showSLL()
