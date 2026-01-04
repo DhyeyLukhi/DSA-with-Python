@@ -22,7 +22,7 @@ class Queue(SLL):
             self.items -= 1
             return removed
     
-    def get_front(self):
+    def get_rear(self):
         if self.is_empty():
             return None
 
@@ -33,7 +33,7 @@ class Queue(SLL):
             
             return front
 
-    def get_rear(self):
+    def get_front(self):
         return self.start
 
     def size(self):

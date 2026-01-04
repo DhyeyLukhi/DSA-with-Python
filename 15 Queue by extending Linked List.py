@@ -22,18 +22,18 @@ class Queue:
             self.queue.delete_first()
             return removed
     
-    def get_front(self):
+    def get_rear(self):
         if self.is_empty():
             print("Queue is Empty")
         
         else:
-            front = self.queue.start
-            while front.next is not None:
-                front = front.next
+            rear = self.queue.start
+            while rear.next is not None:
+                rear = rear.next
 
-            return front
+            return rear
 
-    def get_rear(self):
+    def get_front(self):
         if self.is_empty():
             print("Queue is Empty")
         

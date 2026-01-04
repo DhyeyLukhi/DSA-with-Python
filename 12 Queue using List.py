@@ -16,11 +16,11 @@ class Queue:
         else:
             return self.queue.pop(0)
 
-    def get_front(self):
+    def get_rear(self):
         return self.queue[-1] if not self.is_empty() else None
 
     
-    def get_rear(self):
+    def get_front(self):
         return self.queue[0] if not self.is_empty() else None
 
     

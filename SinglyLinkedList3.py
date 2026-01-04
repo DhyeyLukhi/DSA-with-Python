@@ -55,22 +55,32 @@ class SLL:
         print()
     
     def delete_first(self):
+        removed = None
         if self.start is None:
             print('List is already empty')
             return
+        
+        removed = self.start
         self.start = self.start.next
+        return removed
 
     def delete_last(self):
+        removed = None
         if self.start == None:
             pass
+
         elif self.start.next is None:
+            removed = self.start
             self.start = None
+            return removed
         
         else:
             temp = self.start
             while temp.next.next is not None:
                 temp = temp.next
+            removed = temp.next
             temp.next = None
+            return removed
     
     def delete_item(self, value):
         if self.is_empty():

@@ -35,17 +35,17 @@ class Queue:
             self.items -= 1
             return removed
 
-    def get_front(self):
+    def get_rear(self):
         if self.is_empty():
             return None
         
         else:
-            front = self.start
-            while front.next is not None: front = front.next
+            rear = self.start
+            while rear.next is not None: rear = rear.next
             
-            return front
+            return rear
 
-    def get_rear(self):
+    def get_front(self):
         return self.start
     
     def size(self):
