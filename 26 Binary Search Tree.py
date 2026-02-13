@@ -75,8 +75,8 @@ class BST:
                 return
         
             elif node.left is None and node.right is not None:
-                print(node.item)
                 self.inOrderRecursion(node=node.right)
+                print(node.item)
 
             else:
                 print(node.item)
@@ -85,7 +85,7 @@ class BST:
         elif node is None:
             self.inOrderRecursion(node=self.root)
     
-    #PreOrder Traversal with Recursion
+    #PreOrder Traversal with Recursionk
     def preOrderRecursion(self, node=None):
         if self.root is None:
             return "Tree is Empty"
@@ -101,8 +101,8 @@ class BST:
                 self.preOrderRecursion(node=node.right)
 
             elif node.left is not None and node.right is None:
-                print(node.item)
                 self.preOrderRecursion(node=node.left)
+                print(node.item)
 
             elif node.left is None and node.right is None:
                 print(node.item)
@@ -110,6 +110,30 @@ class BST:
         elif node is None:
             self.preOrderRecursion(node=self.root)
 
+    #PostOrder Traversak with Recursion
+    def postOrderRecursion(self, node=None):
+            if self.root is None:
+                return "Tree is Empty"
+            
+            if node:
+                if node.left is not None and node.right is not None:
+                    self.postOrderRecursion(node=node.left)
+                    self.postOrderRecursion(node=node.right)
+                    print(node.item)
+
+                elif node.left is None and node.right is not None:
+                    self.postOrderRecursion(node=node.right)
+                    print(node.item)
+
+                elif node.left is not None and node.right is None:
+                    self.postOrderRecursion(node=node.left)
+                    print(node.item)
+
+                elif node.left is None and node.right is None:
+                    print(node.item)
+
+            elif node is None:
+                self.postOrderRecursion(node=self.root)
 
 
 
@@ -122,9 +146,9 @@ bst.insert(25)
 bst.insert(45)
 bst.insert(70)
 bst.insert(40)
-# bst.insert(100)
-# bst.insert(27)
-# bst.insert(22)
+bst.insert(100)
+bst.insert(27)  
+bst.insert(22)
 
 # print(bst.search(20))
 
@@ -134,3 +158,5 @@ bst.inOrderRecursion()
 print("PreOrder Traversing with Recursion")
 bst.preOrderRecursion()
 
+print("PostOrder Traversing with Recursion")
+bst.postOrderRecursion()
