@@ -20,31 +20,31 @@ class BST:
                     print("DUPLICATE VALUES ARE NOT ALLOWED")
                     break
 
-                elif temp.left is None and data < temp.item :
-                    newNode = Node(item=data)
-                    temp.left = newNode
-                    break
+                elif data < temp.item:
+                    if temp.left is None:
+                        newNode = Node(item=data)
+                        temp.left = newNode
+                        break
 
-                elif temp.right is None and data > temp.item:
-                    newNode = Node(item=data)
-                    temp.right = newNode
-                    break
-                    
-                elif data < temp.item and temp.left is not None:
-                    temp = temp.left
-                
-                elif data > temp.item and temp.right is not None:
-                    temp = temp.right
+                    else:
+                        temp = temp.left
+
+                elif data > temp.item:
+                    if temp.right is None:
+                        newNode = Node(item=data)
+                        temp.right = newNode
+                        break
+
+                    else:
+                        temp = temp.right
     
 
     def search(self, data):
         if self.root is None:
-            return "Tree is Empty"
+            return None
         
         else:
             temp = self.root
-            if data == temp.item:
-                return temp
             
             while temp is not None:
                 if data == temp.item:
@@ -56,7 +56,7 @@ class BST:
                 elif data < temp.item:
                     temp = temp.left
 
-            return "Node not Found"
+            return None
         
     # This is the recursion one
     def inOrderRecursion(self, node=None):
@@ -75,8 +75,8 @@ class BST:
                 return
         
             elif node.left is None and node.right is not None:
-                self.inOrderRecursion(node=node.right)
                 print(node.item)
+                self.inOrderRecursion(node=node.right)
 
             else:
                 print(node.item)
@@ -88,7 +88,7 @@ class BST:
     #PreOrder Traversal with Recursionk
     def preOrderRecursion(self, node=None):
         if self.root is None:
-            return "Tree is Empty"
+            return None
         
         if node:
             if node.left is not None and node.right is not None:
@@ -113,7 +113,7 @@ class BST:
     #PostOrder Traversak with Recursion
     def postOrderRecursion(self, node=None):
             if self.root is None:
-                return "Tree is Empty"
+                return None
             
             if node:
                 if node.left is not None and node.right is not None:
@@ -126,8 +126,8 @@ class BST:
                     print(node.item)
 
                 elif node.left is not None and node.right is None:
-                    self.postOrderRecursion(node=node.left)
                     print(node.item)
+                    self.postOrderRecursion(node=node.left)
 
                 elif node.left is None and node.right is None:
                     print(node.item)
