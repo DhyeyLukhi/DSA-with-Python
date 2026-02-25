@@ -58,7 +58,7 @@ class BST:
 
             return None
         
-    # This is the recursion one
+    #InOrder Traveresal with Recursion
     def inOrderRecursion(self, node=None):
         
         if self.root is None:
@@ -110,7 +110,7 @@ class BST:
         elif node is None:
             self.preOrderRecursion(node=self.root)
 
-    #PostOrder Traversak with Recursion
+    #PostOrder Traversal with Recursion
     def postOrderRecursion(self, node=None):
             if self.root is None:
                 return None
@@ -134,7 +134,73 @@ class BST:
 
             elif node is None:
                 self.postOrderRecursion(node=self.root)
+    
+    def delete(self, data):
+        node = self.search(data=data)
+        if node is None:
+            print("Node is not found in the Tree !!!!")
+        
+        else:
+            parent = self.root
+            while True:
+                if parent.right == node or parent.left == node:
+                    break
+            
+                elif parent.item > data:
+                    parent = parent.left
 
+                elif parent.item < data:
+                    parent = parent.right
+                
+                elif parent.item == data:
+                    print("ROOT NODE IS SELECTED")
+                    break
+        
+            if node.left is None and node.right is None:
+                if parent.left == node:
+                    parent.left = None
+                
+                else:
+                    parent.right = None
+        
+            elif node.left is not None and node.right is None:
+                predeces = self.predecessor(node)
+                print(predeces.item)
+                parent.left = predeces
+
+            elif node.left is None and node.right is not None:
+                sucessor = self.successor(node)
+                print(sucessor.item)
+                parent.right = sucessor
+
+            else:
+                predeces = self.predecessor(node)
+                print(predeces.item)
+                predeces.right = node.right
+                if parent.left == node:
+                    parent.left = predeces
+                
+                else:
+                    parent.right = predeces
+    
+
+    def predecessor(self, node):
+        prede = node.left
+        while prede.right is not None:
+            prede = prede.right
+        
+        return prede
+
+    def successor(self, node):
+        prede = node.right
+        while prede.left is not None:
+            prede = prede.left
+        
+        return prede
+            
+            
+            
+            
 
 
 
@@ -149,14 +215,23 @@ bst.insert(40)
 bst.insert(100)
 bst.insert(27)  
 bst.insert(22)
+bst.insert(10)
 
 # print(bst.search(20))
 
+# print("InOrder Traversing with Recursion")
+# bst.inOrderRecursion()
+
+# print("PreOrder Traversing with Recursion")
+# bst.preOrderRecursion()
+
+# print("PostOrder Traversing with Recursion")
+# bst.postOrderRecursion()
+
+
+bst.delete(30)
 print("InOrder Traversing with Recursion")
 bst.inOrderRecursion()
 
-print("PreOrder Traversing with Recursion")
-bst.preOrderRecursion()
 
-print("PostOrder Traversing with Recursion")
-bst.postOrderRecursion()
+##ROOT NODE IS NOT GETTING DELETED PROPERLY
