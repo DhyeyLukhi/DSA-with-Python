@@ -153,8 +153,9 @@ class BST:
                     parent = parent.right
                 
                 elif parent.item == data:
-                    print("ROOT NODE IS SELECTED")
-                    break
+                    print("ROOT NODE IS SELECTED... \nUSING SPECIAL 'deleteRoot' FUNCTION TO DELTE ROOT...")
+                    self.deleteRoot()
+                    return
         
             if node.left is None and node.right is None:
                 if parent.left == node:
@@ -162,27 +163,25 @@ class BST:
                 
                 else:
                     parent.right = None
+                
+                return
         
             elif node.left is not None and node.right is None:
-                predeces = self.predecessor(node)
-                print(predeces.item)
-                parent.left = predeces
+               pass
 
             elif node.left is None and node.right is not None:
-                sucessor = self.successor(node)
-                print(sucessor.item)
-                parent.right = sucessor
+                pass
 
             else:
-                predeces = self.predecessor(node)
-                print(predeces.item)
-                predeces.right = node.right
-                if parent.left == node:
-                    parent.left = predeces
-                
-                else:
-                    parent.right = predeces
-    
+                pass
+
+    """"WE NEED TO DO SO MANY THINGS AT THIS TIME, WE HAVE TO DELETE ROOT, A NORMAL LEAF NODE AND A NODE WITH EITHER LEFT OR RIGHT SUB TREE. ALSO WE NEED TO CHECK FOR THE PREDECESSOR AND SUCCESSOR FOR HAVING A LEFT OR RIGHT SUB TREE"""
+
+    def deleteRoot(self):
+        node = self.root
+        predeces = self.predecessor(node)
+        print(predeces.item)
+        
 
     def predecessor(self, node):
         prede = node.left
@@ -191,6 +190,7 @@ class BST:
         
         return prede
 
+
     def successor(self, node):
         prede = node.right
         while prede.left is not None:
@@ -198,11 +198,7 @@ class BST:
         
         return prede
             
-            
-            
-            
-
-
+           
 
 bst = BST()
 bst.insert(30)
@@ -229,9 +225,8 @@ bst.insert(10)
 # bst.postOrderRecursion()
 
 
-bst.delete(30)
+bst.delete(25)
 print("InOrder Traversing with Recursion")
 bst.inOrderRecursion()
-
-
+bst.preOrderRecursion()
 ##ROOT NODE IS NOT GETTING DELETED PROPERLY
