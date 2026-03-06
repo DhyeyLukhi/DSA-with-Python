@@ -134,71 +134,47 @@ class BST:
 
             elif node is None:
                 self.postOrderRecursion(node=self.root)
+
+    def maxval(self, node):
+        maxval = node
+        while maxval.right is not None:
+            maxval = maxval.right
+        
+        return maxval
+
+    def minval(self, node):
+            minval = node
+            while minval.left is not None:
+                minval = minval.left
+            
+            return minval
     
     def delete(self, data):
-        node = self.search(data=data)
-        if node is None:
-            print("Node is not found in the Tree !!!!")
+        self.root = self.recursivedelete(root=self.root, data=data)
+    
+    def recursivedelete(self, root, data):
+        if root is None:
+            return None
+        
+        if data < root.item:
+            root.left = self.recursivedelete(root=root.left, data=data)
+        
+        elif data > root.item:
+            root.right = self.recursivedelete(root=root.right, data=data)
         
         else:
-            parent = self.root
-            while True:
-                if parent.right == node or parent.left == node:
-                    break
+            if root.left is None:
+                return root.right
             
-                elif parent.item > data:
-                    parent = parent.left
-
-                elif parent.item < data:
-                    parent = parent.right
-                
-                elif parent.item == data:
-                    print("ROOT NODE IS SELECTED... \nUSING SPECIAL 'deleteRoot' FUNCTION TO DELTE ROOT...")
-                    self.deleteRoot()
-                    return
-        
-            if node.left is None and node.right is None:
-                if parent.left == node:
-                    parent.left = None
-                
-                else:
-                    parent.right = None
-                
-                return
-        
-            elif node.left is not None and node.right is None:
-               pass
-
-            elif node.left is None and node.right is not None:
-                pass
-
-            else:
-                pass
-
-    """"WE NEED TO DO SO MANY THINGS AT THIS TIME, WE HAVE TO DELETE ROOT, A NORMAL LEAF NODE AND A NODE WITH EITHER LEFT OR RIGHT SUB TREE. ALSO WE NEED TO CHECK FOR THE PREDECESSOR AND SUCCESSOR FOR HAVING A LEFT OR RIGHT SUB TREE"""
-
-    def deleteRoot(self):
-        node = self.root
-        predeces = self.predecessor(node)
-        print(predeces.item)
-        
-
-    def predecessor(self, node):
-        prede = node.left
-        while prede.right is not None:
-            prede = prede.right
-        
-        return prede
-
-
-    def successor(self, node):
-        prede = node.right
-        while prede.left is not None:
-            prede = prede.left
-        
-        return prede
+            elif root.right is None:
+                return root.left
             
-           
+            # Find successor (min in right subtree) and replace
+            successor = self.minval(root.right)
+            root.item = successor.item  # Extract the item value, not the node
+            root.right = self.recursivedelete(root.right, successor.item)  # Update the subtree
+    
+        return root
 
 bst = BST()
 bst.insert(30)
@@ -212,6 +188,7 @@ bst.insert(100)
 bst.insert(27)  
 bst.insert(22)
 bst.insert(10)
+bst.insert(26)
 
 # print(bst.search(20))
 
@@ -225,8 +202,8 @@ bst.insert(10)
 # bst.postOrderRecursion()
 
 
-bst.delete(25)
+bst.delete(30)
 print("InOrder Traversing with Recursion")
 bst.inOrderRecursion()
-bst.preOrderRecursion()
+# bst.preOrderRecursion()
 ##ROOT NODE IS NOT GETTING DELETED PROPERLY
