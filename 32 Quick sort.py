@@ -1,32 +1,51 @@
-mylist = [58, 62, 91, 43, 29, 37, 88, 72, 16, 30]
-
-left = 0
-right = len(mylist)
-loc = 0
+mylist = [58, 69, 91, 43, 29, 37, 88, 72, 16, 30]
 
 
-def locToRight():
-    while mylist[loc] < mylist[right]:
+def locToRight(mylist, left, right, loc):
+
+    print(f"\n\nlocToRight \n\tmylist:{mylist}\n\tLeft:{left}\n\tRight:{right}\n\tLoc:{loc}\n\t before checking")
+
+    while mylist[loc]<mylist[right]:
         right-=1
-    
+        if right<=left:
+            QuickSort(quicklist=mylist[:loc])
+            QuickSort(quicklist=mylist[loc:])
+
     mylist[loc], mylist[right] = mylist[right], mylist[loc]
-    right-=1
     loc = right
-    leftToLoc()
 
-def leftToLoc():
-    while mylist[left] < mylist[loc]:
+    if len(mylist) <= 2:
+        return
+
+    leftToLoc(mylist=mylist, left=left, right=right, loc=loc)
+
+def leftToLoc(mylist, left, right, loc):
+    
+    print(f"\n\nleftToLoc \n\tmylist:{mylist}\n\tLeft:{left}\n\tRight:{right}\n\tLoc:{loc}\n\t before checking")
+    
+    while mylist[left]<=mylist[loc]:
         left+=1
+        if left>right:
+            QuickSort(quicklist=mylist[:loc])
+            QuickSort(quicklist=mylist[loc:])
 
-    mylist[loc], mylist[left] = mylist[left], mylist[loc]
-    left+=1
+    mylist[left], mylist[loc] = mylist[loc], mylist[left]
     loc = left
-    locToRight()
 
+    if len(mylist) <= 2:
+        return
 
-def QuickSort():
-    locToRight()
+    locToRight(mylist=mylist, left=left, right=right, loc=loc)
+
+            
+
+def QuickSort(quicklist):
+    left = 0
+    loc = 0
+    right = len(quicklist)-1
+
+    locToRight(mylist=quicklist, left=left, right=right, loc=0)
+
 
 if __name__ == "__main__":
-    QuickSort()
-    print(mylist)
+    QuickSort(mylist)
