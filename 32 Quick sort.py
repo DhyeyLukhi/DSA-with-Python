@@ -3,8 +3,6 @@ mylist = [58, 69, 91, 43, 29, 37, 88, 72, 16, 30]
 
 def locToRight(mylist, left, right, loc):
 
-    print(f"\n\nlocToRight \n\tmylist:{mylist}\n\tLeft:{left}\n\tRight:{right}\n\tLoc:{loc}\n\t before checking")
-
     while mylist[loc]<mylist[right]:
         right-=1
         if right<=left:
@@ -20,8 +18,6 @@ def locToRight(mylist, left, right, loc):
     leftToLoc(mylist=mylist, left=left, right=right, loc=loc)
 
 def leftToLoc(mylist, left, right, loc):
-    
-    print(f"\n\nleftToLoc \n\tmylist:{mylist}\n\tLeft:{left}\n\tRight:{right}\n\tLoc:{loc}\n\t before checking")
     
     while mylist[left]<=mylist[loc]:
         left+=1
