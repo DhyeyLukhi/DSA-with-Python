@@ -14,4 +14,3 @@ class Solution:
 
 test = Solution()
 ans = test.lengthOfLastWord(s="   fly me   to   the moon  ")
-print(ans)
