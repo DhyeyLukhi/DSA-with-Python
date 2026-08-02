@@ -19,7 +19,6 @@ class Solution:
                     digits[i] = 0
                 
                 else:
-                    print("added")
                     digits[i] = digits[i]+1
                     digits.reverse()
                     break
