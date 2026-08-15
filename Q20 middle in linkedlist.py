@@ -33,11 +33,11 @@ class Solution:
         temp = head
         items = []
         while temp is not None:
-            items.append(temp.val)
+            items.append(temp)
             temp = temp.next
 
         size = len(items)
-        return items[size//2:]
+        return items[size//2]
 
 link = SLL()
 point = link.insert(1)
@@ -45,8 +45,6 @@ link.insert(2)
 link.insert(3)
 link.insert(4)
 link.insert(5)
-link.insert(6)
-link.insert(7)
 
 test = Solution()
 ans = test.middleNode(head=point)
