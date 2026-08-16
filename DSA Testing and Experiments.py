@@ -1,5 +1,5 @@
-l1=[2,2,1,1,3,2,2]
-l2=[1,3,1,2,2,3,4,5,6,7]
-l1.pop()
-ls =  l1[:] and l2[:]
-print(ls)
+string = "string"
+check = "this"
+
+string.find(check)
+print(list(string))
