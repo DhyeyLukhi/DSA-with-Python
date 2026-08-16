@@ -1,3 +1,7 @@
+import time
+
+start = time.perf_counter()
+
 class Solution:
     def isAnagram(self, s, t) -> bool:
         if s and not t or t and not s:
@@ -16,3 +20,6 @@ class Solution:
 test = Solution()
 ans = test.isAnagram(s="anagram", t="gramana")
 print(ans)
+
+end = time.perf_counter()
+print(f"Time taken: {((end-start)*1000):.6f}ms")

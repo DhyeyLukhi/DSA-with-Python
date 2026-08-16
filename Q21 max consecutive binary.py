@@ -1,3 +1,7 @@
+import time
+
+start = time.perf_counter()
+
 class Solution:
     def findMaxConsecutiveOnes(self, nums):
         conse = 0
@@ -17,3 +21,6 @@ class Solution:
 test = Solution()
 ans = test.findMaxConsecutiveOnes(nums=[1,0,1,1,1,0,1])
 print(f"Answer is {ans}")
+
+end = time.perf_counter()
+print(f"{((end-start)*1000):.6f}")
