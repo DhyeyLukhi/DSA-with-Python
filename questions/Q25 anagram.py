@@ -1,3 +1,4 @@
+import pytest
 import time
 
 start = time.perf_counter()
@@ -16,10 +17,11 @@ class Solution:
                 return False
         
         return True if not t else False
+
                     
 test = Solution()
 ans = test.isAnagram(s="anagram", t="gramana")
 print(ans)
-
+assert test.isAnagram(s="noneers", t="eernons") == True
 end = time.perf_counter()
 print(f"Time taken: {((end-start)*1000):.6f}ms")
